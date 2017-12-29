@@ -19,3 +19,32 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+-keepattributes SourceFile,LineNumberTable
+
+# This keep the class and method names the same, for debugging stack traces
+-dontobfuscate
+
+-dontwarn javax.annotation.*
+-dontwarn javax.annotation.concurrent.*
+-dontwarn sun.misc.Unsafe
+
+# Keep R inner classes, so WebView can find app icon via reflection:
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+-keep class **.R$*
+
+# For Guava:
+-dontwarn com.google.common.base.**
+-keep class com.google.common.base.** {*;}
+-dontwarn com.google.errorprone.annotations.**
+-keep class com.google.errorprone.annotations.** {*;}
+-dontwarn com.google.j2objc.annotations.**
+-keep class com.google.j2objc.annotations.** { *; }
+-dontwarn java.lang.ClassValue
+-keep class java.lang.ClassValue { *; }
+-dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+-keep class org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement { *; }
